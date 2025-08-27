@@ -1,7 +1,7 @@
 <!-- Header -->
 <script>
 	export let name = 'Umut Utku';
-	export let email = 'umututku@example.com';
+	export let email = 'contact@umututku.com';
 </script>
 
 <header class="flex justify-between p-6 sm:p-8">

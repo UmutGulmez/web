@@ -1,7 +1,7 @@
 <!-- Footer -->
 <script>
 	let year = new Date().getFullYear();
-	export let email = 'umututku@example.com';
+	export let email = 'contact@umututku.com';
 </script>
 
 <footer
