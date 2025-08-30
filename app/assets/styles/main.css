@@ -1,0 +1,85 @@
+:root {
+  /* Color palette */
+  --bg0: #0e0e0e;
+  --bg1: #151515;
+  --bg2: #242423;
+  --bg3: #333533;
+  --muted: #9e9d9d;
+  --fg: #f5f5f5;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.watermark {
+  position: absolute;
+  inset: 0;
+  font-family: Ubuntu, system-ui;
+  font-weight: 800;
+  font-size: min(16vw, 160px);
+  line-height: 1;
+  color: var(--c-3);
+  opacity: .15;
+  user-select: none;
+  pointer-events: none;
+}
+
+body {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  background: var(--bg0);
+}
+
+/* Subtle grain (pure CSS, no network requests) */
+.grain:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .05;
+  mix-blend-mode: overlay;
+  background-image: radial-gradient(rgba(255, 255, 255, .07) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+/* Minimal custom logo */
+.logo-slashes {
+  width: 48px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.logo-slashes::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: skewX(-20deg);
+  background: var(--fg);
+  width: 9px;
+  border-radius: 2px;
+  box-shadow: 18px 0 0 var(--fg), 36px 0 0 var(--fg);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Global text styles */
+.text-white {
+  color: var(--fg);
+}
+
+.selection\:bg-white\/10 *::selection {
+  background-color: rgba(255, 255, 255, 0.1);
+}
