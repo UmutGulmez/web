@@ -42,11 +42,11 @@
       class="px-4 py-2 rounded-full font-medium text-white/90 hover:bg-white/10 transition"
       >Projects</a
     >
-    <a
-      href="#blog"
+    <NuxtLink
+      to="/blog"
       id="dock-blog"
       class="px-4 py-2 rounded-full font-medium text-white/90 hover:bg-white/10 transition"
-      >Blog</a
+      >Blog</NuxtLink
     >
   </nav>
 </template>

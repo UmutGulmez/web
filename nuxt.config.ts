@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   },
   vue: {
     compilerOptions: {
-      isCustomElement: (tag) => ['fa-solid'].includes(tag)
+            isCustomElement: (tag) => tag === 'D'
     }
   }
 })

@@ -9,12 +9,7 @@
       :more-url="'/projects'"
       :projects="projects"
     />
-    <BlogSection
-      id="blog"
-      title="blog"
-      :more-url="'/blog'"
-      :posts="blogPosts"
-    />
+    <BlogSection id="blog" title="blog" :more-url="'/blogs'" />
   </div>
 </template>
 
@@ -60,43 +55,6 @@ const projects = [
   },
 ];
 
-const blogPosts = [
-  {
-    title: "Interface Motion Study",
-    description:
-      "A study on smooth UI transitions and micro-interactions for modern web apps.",
-    year: "2025",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
-  {
-    title: "Design System",
-    description:
-      "Reusable components and guidelines for scalable product design.",
-    year: "2024",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
-  {
-    title: "Interaction Lab",
-    description: "Prototyping and testing new forms of digital interaction.",
-    year: "2023",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
-  {
-    title: "Interaction Lab",
-    description: "Prototyping and testing new forms of digital interaction.",
-    year: "2023",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
-  {
-    title: "Interaction Lab",
-    description: "Prototyping and testing new forms of digital interaction.",
-    year: "2023",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
-];
+
+// Blog posts are now fetched directly in the BlogSection component
 </script>
