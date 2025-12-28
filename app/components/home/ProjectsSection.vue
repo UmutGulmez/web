@@ -14,8 +14,8 @@
         :view-url="project.viewUrl"
         :source-url="project.sourceUrl"
       />
-      <SeeMoreCard :href="moreUrl" />
     </div>
+    <SeeMoreCard :href="moreUrl" />
   </section>
 </template>
 
