@@ -1,7 +1,7 @@
 <template>
   <a
     :href="href"
-    class="rounded-2xl opacity-60 hover:opacity-70 bg-gradient-to-br from-[#18181b] via-[#232323] to-[#101010] shadow-xl border border-white/10 flex flex-col min-h-[220px] group transition-transform hover:shadow-2xl"
+    class="my-7 p-2 rounded-lg opacity-60 hover:opacity-70 bg-gradient-to-br from-[#18181b] via-[#232323] to-[#101010] shadow-xl border border-zinc-700/20 flex flex-col  group transition-transform hover:shadow-2xl"
   >
     <p class="flex justify-center items-center h-full text-md text-white">
       See More

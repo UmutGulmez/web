@@ -1,6 +1,6 @@
 <template>
   <article
-    class="relative rounded-2xl bg-gradient-to-br from-[#18181b] via-[#232323] to-[#101010] shadow-xl border border-white/10 flex flex-col min-h-[220px] group transition-transform hover:-translate-y-1 hover:shadow-2xl"
+    class="relative rounded-2xl bg-gradient-to-br from-[#18181b] via-[#232323] to-[#101010] shadow-xl border border-zinc-700/10 flex flex-col min-h-[220px] group transition-transform hover:-translate-y-1 hover:shadow-2xl"
   >
     <div class="flex-1 flex flex-col justify-between p-6">
       <div>

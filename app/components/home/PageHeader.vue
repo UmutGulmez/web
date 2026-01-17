@@ -1,11 +1,12 @@
 <template>
   <!-- Header -->
   <header class="p-6 sm:p-8 flex justify-between">
-    <a
-      href=""
+    <NuxtLink
+      to="/"
       class="flex items-center px-5 text-2xl hover:bg-white/10 rounded-full"
-      >Umut Utku</a
-    >
+      >
+      Umut Utku
+      </NuxtLink>
     <a
       href="mailto:contact@umututku.com"
       class="relative gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#18181b] via-[#232323] to-[#101010] border border-white/30 shadow-lg transition-all duration-200 group hover:from-green-700/40 hover:bg-[#232323]"
@@ -23,5 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from '#components';
+
 // Header component
 </script>

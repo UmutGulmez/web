@@ -9,10 +9,10 @@ tags:
   - umutpy
   - cloudflare
   - nginx reverse proxy
-createdAt: 2021-10-30T20:13:18+00:00
+date: 2021-10-30T20:13:18+00:00
 readingTime: 12 dakika
 pinned: true
-bannerImage: /nginxBanner.png
+bannerImage: images/blog/nginxBanner.png
 ---
 
 Merhaba, bir zaman önce **Node.js(Express.js)** ile geliştirdiğim bir web uygulamasını deploy etmek istemiştim, bu süreçte yaşadığım deneyimleri bir blog yazısında konu almayı düşündüm.
@@ -196,7 +196,7 @@ komutunu terminalde kullandığımızda nginx config dosyasını tekrardan okuya
 **C:** _Komutlar şu şekilde,_
 
 - `nginx stop` —  hızlı kapatma
-- `nginx quit` —  insancıl (:D) kapatma
+- `nginx quit` —  insancıl kapatma
 - `nginx reload` —  ayarlar dosyasını tekrardan okuma
 - `nginx reopen` —  kayıt dosyalarını yeniden açma
 

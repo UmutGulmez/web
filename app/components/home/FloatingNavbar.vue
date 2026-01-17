@@ -4,8 +4,8 @@
     id="floating-dock"
     class="fixed z-50 left-1/2 top-8 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full shadow-2xl bg-gradient-to-r from-[#18181b] via-[#232323] to-[#101010] border border-white/10 backdrop-blur-md transition-all duration-300"
   >
-    <a
-      href="#top"
+    <NuxtLink
+      to="/"
       id="dock-home"
       class="flex items-center justify-center w-10 h-10 rounded-full bg-[#232323] transition group"
       aria-label="Home"
@@ -23,30 +23,30 @@
           d="M3 12l9-7 9 7M4 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10"
         />
       </svg>
-    </a>
-    <a
-      href="#aboutme"
+    </NuxtLink>
+    <NuxtLink
+      to="/#aboutme"
       id="dock-aboutme"
       class="px-4 py-2 rounded-full font-medium text-white/90 hover:bg-white/10 transition"
-      >About Me</a
+      >About Me</NuxtLink
     >
-    <a
-      href="#contact"
+    <NuxtLink
+      to="/#contact"
       id="dock-contact"
       class="px-4 py-2 rounded-full font-medium text-white/90 hover:bg-white/10 transition"
-      >Contact</a
+      >Contact</NuxtLink
     >
-    <a
-      href="#projects"
+    <NuxtLink
+      to="/#projects"
       id="dock-projects"
       class="px-4 py-2 rounded-full font-medium text-white/90 hover:bg-white/10 transition"
-      >Projects</a
-    >
-    <a
-      href="#blog"
+      >Projects
+    </NuxtLink>
+    <NuxtLink
+      to="/blog"
       id="dock-blog"
       class="px-4 py-2 rounded-full font-medium text-white/90 hover:bg-white/10 transition"
-      >Blog</a
+      >Blog</NuxtLink
     >
   </nav>
 </template>
@@ -62,7 +62,7 @@ onMounted(() => {
     { id: "dock-contact", section: "contact" },
     { id: "dock-projects", section: "projects" },
     { id: "dock-blog", section: "blog" },
-  ];
+  ] as const;
 
   function getSectionTop(id: string) {
     const el = document.getElementById(id) || document.querySelector(`#${id}`);
@@ -73,17 +73,17 @@ onMounted(() => {
 
   function highlightDock() {
     const scroll = window.scrollY + window.innerHeight / 4;
-    let active = dockLinks[0].id;
+    let active: (typeof dockLinks)[number]["id"] = dockLinks[0].id;
 
     for (let i = 0; i < dockLinks.length; i++) {
-      const currTop = getSectionTop(dockLinks[i].section);
+      const currTop = getSectionTop(dockLinks[i]!.section);
       const nextTop =
         i + 1 < dockLinks.length
-          ? getSectionTop(dockLinks[i + 1].section)
+          ? getSectionTop(dockLinks[i + 1]!.section)
           : Infinity;
 
       if (scroll >= currTop && scroll < nextTop) {
-        active = dockLinks[i].id;
+        active = dockLinks[i]!.id;
         break;
       }
     }
