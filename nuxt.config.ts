@@ -22,6 +22,11 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  content: {
+    experimental: {
+      sqliteConnector: 'native'
+    }
+  },
   app: {
     head: {
       title: 'Umut Utku — Design & Interaction',
@@ -33,7 +38,7 @@ export default defineNuxtConfig({
   },
   vue: {
     compilerOptions: {
-            isCustomElement: (tag) => tag === 'D'
+      isCustomElement: (tag) => tag === 'D'
     }
   }
 })
