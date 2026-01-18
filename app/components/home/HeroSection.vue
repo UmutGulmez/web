@@ -61,45 +61,74 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 // Loading state
-const isLoading = ref(true);
+const isLoading = ref(false); // Start as false
 const typedText = ref('');
 
 // The text to type
 const fullText = 'an electronics engineer who codes';
 
+// Watch isLoading to control body scroll
+watch(isLoading, (newValue) => {
+  if (newValue) {
+    // Disable scroll when loading
+    document.body.style.overflow = 'hidden';
+  } else {
+    // Enable scroll when done
+    document.body.style.overflow = '';
+  }
+});
+
 onMounted(() => {
-  let currentIndex = 0;
+  // Check if this is the initial page load (not a NuxtLink navigation)
+  const hasShownAnimation = sessionStorage.getItem('hasShownLoadingAnimation');
+  
+  // Only show animation if it hasn't been shown in this session
+  if (!hasShownAnimation) {
+    isLoading.value = true;
+    
+    // Mark that we've shown the animation
+    sessionStorage.setItem('hasShownLoadingAnimation', 'true');
+    
+    let currentIndex = 0;
 
-  // Type each letter with a delay
-  const typeLetters = () => {
-    if (currentIndex < fullText.length) {
-      typedText.value = fullText.substring(0, currentIndex + 1);
-      currentIndex++;
-      setTimeout(typeLetters, 50); // 50ms delay between letters
-    } else {
-      // Wait a bit after typing completes, then fade out
-      setTimeout(() => {
-        isLoading.value = false;
-      }, 500);
-    }
-  };
+    // Type each letter with a delay
+    const typeLetters = () => {
+      if (currentIndex < fullText.length) {
+        typedText.value = fullText.substring(0, currentIndex + 1);
+        currentIndex++;
+        setTimeout(typeLetters, 50); // 50ms delay between letters
+      } else {
+        // Wait a bit after typing completes, then fade out
+        setTimeout(() => {
+          isLoading.value = false;
+        }, 500);
+      }
+    };
 
-  // Start typing after a brief delay
-  setTimeout(typeLetters, 500);
+    // Start typing after a brief delay
+    setTimeout(typeLetters, 500);
+  }
+  // If hasShownAnimation exists, isLoading stays false and animation is skipped
 });
 </script>
 
 <style scoped>
-/* Fade transition for loading screen */
-.fade-enter-active,
+/* Only fade-out transition, no fade-in */
+.fade-enter-active {
+  transition: none; /* No fade-in */
+}
+
 .fade-leave-active {
   transition: opacity 1s ease-out;
 }
 
-.fade-enter-from,
+.fade-enter-from {
+  opacity: 1; /* Start fully visible */
+}
+
 .fade-leave-to {
   opacity: 0;
 }
