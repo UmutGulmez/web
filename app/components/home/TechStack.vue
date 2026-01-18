@@ -1,9 +1,9 @@
 <template>
   <div
-    class="card bg-gradient-to-br from-[#18181b] via-[#232323] to-[#101010] mb-10 mt-12 w-full px-5 pt-3 text-white shadow-xl backdrop-blur-sm md:ml-0 md:mr-4 md:mt-0 md:w-[120px] md:self-auto lg:mr-12 lg:w-[220px]"
+    class="card bg-gradient-to-br from-[#18181b] via-[#232323] to-[#101010] mb-10 mt-6 w-full px-5 pt-3 text-white shadow-xl backdrop-blur-sm md:ml-0 md:mr-4 md:mt-0 md:w-[120px] md:self-auto lg:mr-12 lg:w-[220px]"
   >
     <p class="mb-2 flex justify-center text-base text-white/50">Techs I Use</p>
-    <div class="grid grid-cols-2 gap-3 px-4 pb-2">
+    <div class="grid grid-cols-3 md:grid-cols-2 gap-3 px-4 pb-2">
       <TechIcon
         v-for="tech in techStack"
         :key="tech.name"

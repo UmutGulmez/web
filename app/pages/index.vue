@@ -1,5 +1,5 @@
 <template>
-  <div class="relative overflow-hidden">
+  <div class="relative overflow-hidden mobile-container">
     <!-- White gradient blob on the right -->
     <div aria-hidden="true" class="absolute inset-0 -z-10 pointer-events-none">
       <div

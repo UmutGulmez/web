@@ -12,6 +12,7 @@
     <div class="grain"></div>
 
     <FloatingNavbar />
+    <MobileNav />
     <PageHeader />
 
     <slot />
