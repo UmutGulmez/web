@@ -2,7 +2,7 @@
   <!-- Floating Navigation Dock -->
   <nav
     id="floating-dock"
-    class="fixed z-50 left-1/2 top-8 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full shadow-2xl backdrop-blur-md bg-black/30 border border-white/5 transition-all duration-300"
+    class="hidden md:flex fixed z-50 left-1/2 top-8 -translate-x-1/2 items-center gap-2 px-4 py-2 rounded-full shadow-2xl backdrop-blur-md bg-black/30 border border-white/5 transition-all duration-300"
     style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.25)); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);"
   >
     <NuxtLink

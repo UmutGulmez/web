@@ -1,13 +1,15 @@
 <template>
   <footer
-    class="px-6 sm:px-14 md:px-20 py-10 text-xs text-white/50 flex items-center justify-between"
+    class="px-6 sm:px-14 md:px-20 py-10 text-xs text-white/50 flex flex-col md:flex-row items-center justify-center md:justify-between gap-6"
   >
-    <p>© {{ year }} · All rights reserved</p>
-    <nav class="flex items-center gap-6">
-      <NuxtLink class="hover:text-white transition" to="/#aboutme">about</NuxtLink>
-      <NuxtLink class="hover:text-white transition" to="/#contact">contact</NuxtLink>
-      <NuxtLink class="hover:text-white transition" to="/#projects">projects</NuxtLink>
-      <NuxtLink class="hover:text-white transition" to="/blog">blog</NuxtLink>
+    <p class="text-center md:text-left">© {{ year }} · All rights reserved</p>
+    <nav class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+      <div class="flex items-center gap-6">
+        <NuxtLink class="hover:text-white transition" to="/#aboutme">about</NuxtLink>
+        <NuxtLink class="hover:text-white transition" to="/#contact">contact</NuxtLink>
+        <NuxtLink class="hover:text-white transition" to="/#projects">projects</NuxtLink>
+        <NuxtLink class="hover:text-white transition" to="/blog">blog</NuxtLink>
+      </div>
       <a
         href="mailto:contact@umututku.com"
         class="relative flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-green-700/80 via-green-600/80 to-emerald-500/80 border border-green-400/30 shadow-lg hover:scale-105 transition-all duration-200 group"

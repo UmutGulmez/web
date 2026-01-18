@@ -1,9 +1,9 @@
 <template>
-  <!-- Loading Animation -->
+  <!-- Loading Animation - Desktop -->
   <Transition name="fade">
     <div
       v-if="isLoading"
-      class="fixed inset-0 z-[9999] bg-black flex items-center justify-center px-6 sm:px-14 md:px-20"
+      class="hidden md:flex fixed inset-0 z-[9999] bg-black items-center justify-center px-6 sm:px-14 md:px-20"
       style="transform: translate(-2px, 2px);"
     >
       <div class="max-w-3xl">
@@ -16,10 +16,33 @@
     </div>
   </Transition>
 
-  <!-- Main Hero Section -->
-  <main class="min-h-[calc(84vh-88px)]">
+  <!-- Loading Animation - Mobile -->
+  <Transition name="fade">
     <div
-      class="flex items-center justify-center px-6 sm:px-14 md:px-20 top-[34vh] sm:top-[30vh] min-h-[calc(84vh-88px)]"
+      v-if="isLoading"
+      class="md:hidden fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center px-6"
+    >
+      <!-- Modern animated bars -->
+      <div class="flex items-end gap-2 mb-8">
+        <div class="w-2 h-12 bg-gradient-to-t from-gray-500 to-gray-300 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+        <div class="w-2 h-16 bg-gradient-to-t from-gray-500 to-gray-300 rounded-full animate-bounce" style="animation-delay: 100ms;"></div>
+        <div class="w-2 h-10 bg-gradient-to-t from-gray-500 to-gray-300 rounded-full animate-bounce" style="animation-delay: 200ms;"></div>
+        <div class="w-2 h-14 bg-gradient-to-t from-gray-500 to-gray-300 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+        <div class="w-2 h-12 bg-gradient-to-t from-gray-500 to-gray-300 rounded-full animate-bounce" style="animation-delay: 400ms;"></div>
+      </div>
+      
+      <!-- Text with fade-in animation -->
+      <div class="text-center space-y-2 loading-text">
+        <h2 class="text-2xl font-bold text-white tracking-tight">Umut Utku</h2>
+        <p class="text-sm text-white/50 tracking-wider">Electronics Engineer</p>
+      </div>
+    </div>
+  </Transition>
+
+  <!-- Main Hero Section -->
+  <main class="min-h-[60vh] md:min-h-[calc(84vh-88px)]">
+    <div
+      class="flex items-center justify-center px-6 sm:px-14 md:px-20 min-h-[60vh] md:min-h-[calc(84vh-88px)] md:top-[30vh]"
     >
       <div class="max-w-3xl">
         <h1
@@ -60,7 +83,7 @@ onMounted(() => {
       // Wait a bit after typing completes, then fade out
       setTimeout(() => {
         isLoading.value = false;
-      }, 800);
+      }, 500);
     }
   };
 
@@ -84,5 +107,21 @@ onMounted(() => {
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
+}
+
+/* Loading text animation */
+.loading-text {
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
