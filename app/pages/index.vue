@@ -23,37 +23,46 @@
 
 <script setup lang="ts">
 // Nuxt auto-imports components
+const lorem = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+  "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+  "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
+];
+
+const details = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+];
+const highlights = [
+  "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+  "Sed do eiusmod tempor incididunt ut labore et dolore",
+  "Ut enim ad minim veniam quis nostrud exercitation",
+];
+const stats = [
+  { value: "120k+", label: "Lorem ipsum" },
+  { value: "99.9%", label: "Dolor sit amet" },
+  { value: "+20%", label: "Consectetur" },
+  { value: "6 mo", label: "Adipiscing elit" },
+];
+const common = { details, highlights, stats, viewUrl: "#", sourceUrl: "#", role: "Lorem Ipsum — Design & Development", duration: "6 months" };
+
 const projects = [
-  {
-    title: "BotsLab",
-    description:
-      "Chat Bot Listing Platform - Designed, coded, and managed a feature-rich chatbot listing platform.",
-    year: "2022",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
-  {
-    title: "Magnet Bot",
-    description: "Architected high-availability chatbot for 120k+ users, achieving a 20% increase in retention via iterative optimization.",
-    year: "2021",
-    viewUrl: "#",
-    sourceUrl: "#",
-  },
+  { ...common, title: "Lorem Ipsum", description: lorem[0], year: "2025", status: "Live", tags: ["Web", "Design"], stack: ["Nuxt", "Vue", "Tailwind", "Node.js"], featured: true },
+  { ...common, title: "Dolor Sit", description: lorem[1], year: "2024", status: "Live", tags: ["Mobile", "Backend"], stack: ["Flutter", "Firebase", "Go"] },
+  { ...common, title: "Amet Consectetur", description: lorem[2], year: "2024", status: "Archived", tags: ["AI", "Backend"], stack: ["Python", "FastAPI", "PostgreSQL"] },
+  { ...common, title: "Adipiscing Elit", description: lorem[3], year: "2023", status: "In progress", tags: ["Web", "AI"], stack: ["Next.js", "TypeScript", "OpenAI"] },
+  { ...common, title: "Tempor Labs", description: lorem[4], year: "2022", status: "Archived", tags: ["Design", "Mobile"], stack: ["Figma", "React Native"] },
+  { ...common, title: "Magna Aliqua", description: lorem[5], year: "2021", status: "Archived", tags: ["Backend", "Web"], stack: ["Express", "Redis", "Docker"] },
 ];
 
 const experiences = [
-  {
-    role: "Electronics Team Lead",
-    company: "Arcturus Rocket Team",
-    year: "2025 - Present",
-    description: "Led software and electronics development team for a 16,000 ft supersonic rocket.",
-  },
-  {
-    role: "Avionics Engineer",
-    company: "Arcturus Rocket Team",
-    year: "2024 - 2025",
-    description: "Designed and implemented avionics systems for the high-altitude rockets.",
-  },
+  { role: "Lorem Ipsum Lead", company: "Dolor Sit Inc.", year: "2025 — Present", description: lorem[0] },
+  { role: "Consectetur Engineer", company: "Amet Labs", year: "2024 — 2025", description: lorem[1] },
+  { role: "Adipiscing Developer", company: "Elit Studio", year: "2022 — 2024", description: lorem[2] },
+  { role: "Tempor Intern", company: "Incididunt Co.", year: "2021 — 2022", description: lorem[3] },
 ];
 
 // Blog posts are now fetched directly in the BlogSection component
