@@ -1,4 +1,5 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { defineSitemapSchema } from '@nuxtjs/sitemap/content'
 
 export default defineContentConfig({
   collections: {
@@ -13,7 +14,8 @@ export default defineContentConfig({
         bannerImage: z.string().optional(),
         author: z.string().optional(),
         readingTime: z.string().optional(),
-        tags: z.string().optional()
+        tags: z.string().optional(),
+        sitemap: defineSitemapSchema()
       }),
     }),
   },
