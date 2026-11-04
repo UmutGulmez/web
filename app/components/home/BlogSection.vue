@@ -53,7 +53,7 @@
 <script setup lang="ts">
 const title = 'Blog';
 
-const { data: posts } = await useAsyncData(() => {
+const { data: posts } = await useAsyncData('home-blog-posts', () => {
   return queryCollection('blog')
     .order('date', 'DESC')
     .all()

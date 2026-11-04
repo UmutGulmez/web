@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: posts } = await useAsyncData(() => {
+const { data: posts } = await useAsyncData('blog-card-posts', () => {
   return queryCollection('blog')
     .order('date', 'DESC')
     .all()
