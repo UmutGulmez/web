@@ -15,54 +15,78 @@
       title="what do i do"
       :more-url="'/projects'"
       :projects="projects"
-      :experiences="experiences"
     />
     <BlogSection id="blog" title="blog" :more-url="'/blogs'" />
   </div>
 </template>
 
 <script setup lang="ts">
-// Nuxt auto-imports components
-const lorem = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-  "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-  "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-];
-
-const details = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-];
-const highlights = [
-  "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-  "Sed do eiusmod tempor incididunt ut labore et dolore",
-  "Ut enim ad minim veniam quis nostrud exercitation",
-];
-const stats = [
-  { value: "120k+", label: "Lorem ipsum" },
-  { value: "99.9%", label: "Dolor sit amet" },
-  { value: "+20%", label: "Consectetur" },
-  { value: "6 mo", label: "Adipiscing elit" },
-];
-const common = { details, highlights, stats, viewUrl: "#", sourceUrl: "#", role: "Lorem Ipsum — Design & Development", duration: "6 months" };
-
 const projects = [
-  { ...common, title: "Lorem Ipsum", description: lorem[0], year: "2025", status: "Live", tags: ["Web", "Design"], stack: ["Nuxt", "Vue", "Tailwind", "Node.js"], featured: true },
-  { ...common, title: "Dolor Sit", description: lorem[1], year: "2024", status: "Live", tags: ["Mobile", "Backend"], stack: ["Flutter", "Firebase", "Go"] },
-  { ...common, title: "Amet Consectetur", description: lorem[2], year: "2024", status: "Archived", tags: ["AI", "Backend"], stack: ["Python", "FastAPI", "PostgreSQL"] },
-  { ...common, title: "Adipiscing Elit", description: lorem[3], year: "2023", status: "In progress", tags: ["Web", "AI"], stack: ["Next.js", "TypeScript", "OpenAI"] },
-  { ...common, title: "Tempor Labs", description: lorem[4], year: "2022", status: "Archived", tags: ["Design", "Mobile"], stack: ["Figma", "React Native"] },
-  { ...common, title: "Magna Aliqua", description: lorem[5], year: "2021", status: "Archived", tags: ["Backend", "Web"], stack: ["Express", "Redis", "Docker"] },
-];
-
-const experiences = [
-  { role: "Lorem Ipsum Lead", company: "Dolor Sit Inc.", year: "2025 — Present", description: lorem[0] },
-  { role: "Consectetur Engineer", company: "Amet Labs", year: "2024 — 2025", description: lorem[1] },
-  { role: "Adipiscing Developer", company: "Elit Studio", year: "2022 — 2024", description: lorem[2] },
-  { role: "Tempor Intern", company: "Incididunt Co.", year: "2021 — 2022", description: lorem[3] },
+  {
+    title: "A Supersonic Rocket: K4",
+    description:
+      "A supersonic rocket designed with a university student team that i lead. Rocket launched in 2026 and a reached a top speed of +500 m/s with ~8000m altitude. I was responsible for the design and development of the rocket's electronics, software, ground-station, coms and more as well as the overall project management.",
+    year: "2026",
+    status: "Launched",
+    tags: ["Rocket", "Aerospace", "Engineering"],
+    stack: ["KiCAD", "SolidWorks", "AnSys", "C++", "Python", "JS"],
+    featured: true,
+    images: ["/images/projects/k4/1.JPG", "/images/projects/k4/2.JPG"],
+    details: [],
+    highlights: [],
+    stats: [
+      { value: "~8000 m", label: "Altitude" },
+      { value: "+500 m/s", label: "Speed" },
+      { value: "1.6 Mach", label: "Speed" },
+      { value: "12 mo", label: "of Development" },
+    ],
+    role: "Vice President of the Rocket Team — Design & Development",
+    duration: "12 months",
+  },
+  {
+    title: "Liquid Rocket Engine",
+    description: "A liqued rocker engine that has thrust more than 1000N. ",
+    year: "2027",
+    status: "Upcoming",
+    tags: ["Rocket", "Aerospace", "Engineering"],
+    stack: [],
+    images: [],
+    details: [],
+    highlights: [],
+    stats: [{ value: "+1 kN", label: "Thrust" }],
+    role: "Vice President of the Rocket Team — Design & Development",
+    duration: "18 months",
+  },
+  {
+    title: "Vibration Isolator Experiment Payload",
+    description:
+      "Designed, Developed and launched a scientific payload for a supersonic sounding rocket. Payload was designed to understand the performance of in-house designed vibration isolator with helicel connected ropes in a high-vibration environment. Payload included a custom designed vibraiton isolator, a referance isolator with own avionics, sensors, coms and data acquasititon systems. Payload launched in 2026 and wasn't able to recovered due to rocket failure.   ",
+    year: "2026",
+    status: "Launched",
+    tags: ["Rocket", "Aerospace", "Engineering", "Payload"],
+    stack: ["C++", "Python", "MatLab", "SolidWorks"],
+    images: [],
+    details: [],
+    highlights: [],
+    stats: [{ value: "+1 kN", label: "Thrust" }],
+    role: "Vice President of the Rocket Team — Design & Development",
+    duration: "18 months",
+  },
+  {
+    title: "MagnetBot",
+    description:
+      "A Discord bot that reached 120k+ users in 2021. Was responsible for development and deployment. Bot was developed in NodeJS in backend and VueJS in fronted for management panel.",
+    year: "2021",
+    status: "Ended",
+    tags: ["Bot", "Web"],
+    stack: ["NodeJS", "VueJS", "NuxtJS", "MongoDB", "Redis"],
+    images: [],
+    details: [],
+    highlights: [],
+    stats: [{ value: "+120,000", label: "Users" }],
+    role: "Owner & Lead Developer",
+    duration: "8 months",
+  },
 ];
 
 // Blog posts are now fetched directly in the BlogSection component

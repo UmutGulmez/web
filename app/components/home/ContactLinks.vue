@@ -15,10 +15,8 @@
 
 <script setup lang="ts">
 const socialLinks = [
-  { href: "https://linkedin.com/", icon: "linkedin" },
-  { href: "https://github.com/", icon: "github" },
-  { href: "https://twitter.com/", icon: "twitter" },
-  { href: "https://instagram.com/", icon: "instagram" },
-  { href: "https://dribbble.com/", icon: "dribbble" },
+  { href: "https://www.linkedin.com/in/umutpy/", icon: "linkedin" },
+  { href: "https://github.com/UmutGulmez", icon: "github" },
+  { href: "mailto:contact@umututku.com", icon: "email" },
 ];
 </script>

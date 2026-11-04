@@ -9,13 +9,19 @@
         class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-8"
       >
         <div>
-          <p class="font-mono text-xs tracking-[0.3em] uppercase text-zinc-500 mb-2">
+          <p
+            class="font-mono text-xs tracking-[0.3em] uppercase text-zinc-500 mb-2"
+          >
             Selected work
           </p>
-          <h3 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+          <h3
+            class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3"
+          >
             <span class="w-2 h-9 rounded bg-gray-500 block"></span>
             Projects
-            <span class="font-mono text-sm font-normal text-zinc-500 self-start mt-1">
+            <span
+              class="font-mono text-sm font-normal text-zinc-500 self-start mt-1"
+            >
               ({{ String(projects?.length ?? 0).padStart(2, "0") }})
             </span>
           </h3>
@@ -71,8 +77,18 @@
           <!-- Generated cover art -->
           <div
             class="cover"
-            :class="[`pat-${patternOf(project)}`, project.featured ? 'cover--lg' : '']"
+            :class="[
+              `pat-${patternOf(project)}`,
+              project.featured ? 'cover--lg' : '',
+            ]"
           >
+            <img
+              v-if="project.images?.length"
+              :src="project.images[0]"
+              :alt="project.title"
+              loading="lazy"
+              class="cover-photo"
+            />
             <div class="cover-art" aria-hidden="true"></div>
             <div class="cover-fade" aria-hidden="true"></div>
 
@@ -112,12 +128,16 @@
             </h4>
             <p
               class="mt-2 text-sm text-zinc-400 leading-relaxed"
-              :class="project.featured ? 'md:max-w-xl md:text-base' : 'line-clamp-3'"
+              :class="
+                project.featured ? 'md:max-w-xl md:text-base' : 'line-clamp-3'
+              "
             >
               {{ project.description }}
             </p>
 
-            <div class="mt-auto pt-5 flex flex-wrap items-center justify-between gap-3">
+            <div
+              class="mt-auto pt-5 flex flex-wrap items-center justify-between gap-3"
+            >
               <ul v-if="project.tags?.length" class="flex flex-wrap gap-1.5">
                 <li
                   v-for="tag in project.tags"
@@ -129,7 +149,12 @@
               </ul>
 
               <div class="flex items-center gap-4 ml-auto">
-                <a v-if="project.sourceUrl" :href="project.sourceUrl" class="project-link" @click.stop>
+                <a
+                  v-if="project.sourceUrl"
+                  :href="project.sourceUrl"
+                  class="project-link"
+                  @click.stop
+                >
                   Source
                 </a>
                 <a
@@ -166,65 +191,6 @@
       </div>
     </div>
 
-    <!-- ───────────── Experience ───────────── -->
-    <div class="mt-20 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-      <header v-reveal class="lg:col-span-4">
-        <div class="lg:sticky lg:top-28">
-          <p class="font-mono text-xs tracking-[0.3em] uppercase text-zinc-500 mb-2">
-            Where I've worked
-          </p>
-          <h3 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
-            <span class="w-2 h-9 rounded bg-gray-500 block"></span>
-            Experience
-          </h3>
-          <p class="mt-5 text-sm text-zinc-500 leading-relaxed max-w-xs">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore.
-          </p>
-          <div class="mt-6 font-mono text-xs text-zinc-600">
-            <span class="text-white text-2xl font-bold tabular-nums">
-              {{ String(experiences?.length ?? 0).padStart(2, "0") }}
-            </span>
-            &nbsp;roles
-          </div>
-        </div>
-      </header>
-
-      <div ref="timelineEl" class="relative lg:col-span-8">
-        <div class="absolute left-[7px] top-2 bottom-2 w-px bg-zinc-800"></div>
-        <div
-          class="absolute left-[7px] top-2 bottom-2 w-px origin-top bg-gradient-to-b from-white/80 to-white/10"
-          :style="{ transform: `scaleY(${progress})` }"
-        ></div>
-
-        <ol class="space-y-5">
-          <li
-            v-for="(exp, index) in experiences"
-            :key="index"
-            v-reveal="index"
-            class="relative pl-10 group"
-          >
-            <span class="timeline-node" aria-hidden="true"></span>
-
-            <div class="exp-card">
-              <span class="font-mono text-[11px] text-zinc-500 tracking-wide">
-                {{ exp.year }}
-              </span>
-              <h4 class="mt-1 text-lg md:text-xl font-semibold text-white">
-                {{ exp.role }}
-                <span class="text-zinc-500 font-normal">· {{ exp.company }}</span>
-              </h4>
-              <p class="mt-2 text-sm text-zinc-400 leading-relaxed max-w-2xl">
-                {{ exp.description }}
-              </p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </div>
-
-    <SeeMoreCard :href="moreUrl" />
-
     <ProjectModal
       :project="selected"
       :index="selectedIndex"
@@ -240,19 +206,11 @@
 import type { Directive } from "vue";
 import type { Project } from "~/types/project";
 
-interface Experience {
-  role: string;
-  company: string;
-  year: string | number;
-  description: string;
-}
-
 const props = defineProps<{
   id: string;
   title: string;
   moreUrl: string;
   projects?: Project[];
-  experiences?: Experience[];
 }>();
 
 /* ── Filtering ── */
@@ -262,14 +220,14 @@ const allTags = computed(() => [
 ]);
 const filteredProjects = computed(() =>
   (props.projects ?? []).filter(
-    (p) => activeTag.value === "All" || p.tags?.includes(activeTag.value)
-  )
+    (p) => activeTag.value === "All" || p.tags?.includes(activeTag.value),
+  ),
 );
 
 /* ── Popup ── */
 const selected = ref<Project | null>(null);
 const selectedIndex = computed(() =>
-  Math.max(0, filteredProjects.value.indexOf(selected.value as Project))
+  Math.max(0, filteredProjects.value.indexOf(selected.value as Project)),
 );
 function go(dir: number) {
   const list = filteredProjects.value;
@@ -305,38 +263,13 @@ const vReveal: Directive<HTMLElement, number | undefined> = {
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
     observer.observe(el);
   },
 };
 
-/* ── Timeline progress ── */
-const timelineEl = ref<HTMLElement | null>(null);
-const progress = ref(0);
-let raf = 0;
-
-function updateProgress() {
-  cancelAnimationFrame(raf);
-  raf = requestAnimationFrame(() => {
-    const el = timelineEl.value;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const p = (window.innerHeight * 0.7 - rect.top) / rect.height;
-    progress.value = Math.min(1, Math.max(0, p));
-  });
-}
-
-onMounted(() => {
-  updateProgress();
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  window.addEventListener("resize", updateProgress);
-});
-
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", updateProgress);
-  window.removeEventListener("resize", updateProgress);
-  cancelAnimationFrame(raf);
   observer?.disconnect();
   observer = null;
 });
@@ -445,16 +378,42 @@ onBeforeUnmount(() => {
     min-height: 15rem;
   }
 }
+.cover-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  /* fades out to the left so the dot pattern stays visible */
+  mask-image: linear-gradient(
+    to right,
+    transparent 5%,
+    rgba(0, 0, 0, 0.55) 40%,
+    #000 100%
+  );
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.6s ease;
+}
+.project-card:hover .cover-photo {
+  opacity: 0.95;
+  transform: scale(1.05);
+}
 .cover-art {
   position: absolute;
   inset: -20%;
   opacity: 0.55;
-  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.6s ease;
-  transform: translate(calc(var(--px) * -22px), calc(var(--py) * -22px)) scale(1);
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.6s ease;
+  transform: translate(calc(var(--px) * -22px), calc(var(--py) * -22px))
+    scale(1);
 }
 .project-card:hover .cover-art {
   opacity: 0.95;
-  transform: translate(calc(var(--px) * -22px), calc(var(--py) * -22px)) scale(1.08);
+  transform: translate(calc(var(--px) * -22px), calc(var(--py) * -22px))
+    scale(1.08);
 }
 .cover-fade {
   position: absolute;
@@ -471,7 +430,9 @@ onBeforeUnmount(() => {
   font-size: 4.5rem;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.28);
-  transition: -webkit-text-stroke-color 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition:
+    -webkit-text-stroke-color 0.5s ease,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
   user-select: none;
 }
 .cover--lg .cover-index {
@@ -537,7 +498,9 @@ onBeforeUnmount(() => {
 
 /* ── Filter leave / move ── */
 .project-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 .project-leave-to {
   opacity: 0 !important;
@@ -551,7 +514,13 @@ onBeforeUnmount(() => {
 .marquee {
   overflow: hidden;
   border-block: 1px solid rgba(255, 255, 255, 0.06);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
 .marquee-track {
   display: flex;
@@ -589,53 +558,16 @@ onBeforeUnmount(() => {
     transform: translateX(-50%);
   }
 }
-
-/* ── Timeline ── */
-.timeline-node {
-  position: absolute;
-  left: 0;
-  top: 1.5rem;
-  width: 15px;
-  height: 15px;
-  border-radius: 9999px;
-  background: #0e0e0e;
-  border: 1px solid #52525b;
-  transition: all 0.4s ease;
-}
-.timeline-node::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border-radius: 9999px;
-  background: #71717a;
-  transition: background 0.4s ease;
-}
-.group:hover .timeline-node {
-  border-color: #f5f5f5;
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06);
-}
-.group:hover .timeline-node::after {
-  background: #f5f5f5;
-}
-.exp-card {
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(24, 24, 27, 0.4);
-  border-radius: 1rem;
-  padding: 1.1rem 1.4rem;
-  transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
-}
-.group:hover .exp-card {
-  background: rgba(39, 39, 42, 0.6);
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateX(4px);
-}
 </style>
 
 <!-- Unscoped: shared with ProjectModal -->
 <style>
 /* five monochrome patterns */
 .pat-0 .cover-art {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.55) 1.2px, transparent 1.4px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.55) 1.2px,
+    transparent 1.4px
+  );
   background-size: 18px 18px;
   mask-image: radial-gradient(circle at 70% 40%, #000 0%, transparent 65%);
 }
@@ -653,7 +585,12 @@ onBeforeUnmount(() => {
     transparent 0 12px,
     rgba(255, 255, 255, 0.2) 12px 13px
   );
-  mask-image: linear-gradient(120deg, transparent 10%, #000 55%, transparent 95%);
+  mask-image: linear-gradient(
+    120deg,
+    transparent 10%,
+    #000 55%,
+    transparent 95%
+  );
 }
 .pat-3 .cover-art {
   background-image:
